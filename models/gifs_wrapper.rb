@@ -1,5 +1,7 @@
 class GifsWrapper
-  BASE_URL = "http://api.giphy.com/v1/gifs/search?api_key=YJX6Vs4kayAeOM4etN7P5ueL4ie4wU5D"
+
+
+  BASE_URL = "http://api.giphy.com/v1/gifs/search?api_key=#{ENV['GIPHY_API_KEY']}"
   # http://api.giphy.com/v1/gifs/search?api_key=YJX6Vs4kayAeOM4etN7P5ueL4ie4wU5D&q=steven-universe
 
   attr_reader :gif_urls

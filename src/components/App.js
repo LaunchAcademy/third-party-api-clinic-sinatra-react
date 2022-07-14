@@ -10,7 +10,6 @@ const App = (props) => {
         throw new Error(`${response.status} ${response.statusText}`)
       }
       const responseBody = await response.json()
-      // debugger
       setGifs(responseBody)
     } catch (err) {
       console.log(err)
@@ -18,7 +17,7 @@ const App = (props) => {
   }
 
   useEffect(() => {
-    fetchGifs()
+    // fetchGifs()
   }, [])
 
   const gifImages = gifs.map((gifLink) => {
