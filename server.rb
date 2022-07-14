@@ -24,18 +24,23 @@ get "/" do
 end
 
 get "/api/v1/gifs" do
-  BASE_URL = "http://api.giphy.com/v1/gifs/search?api_key=#{ENV['GIPHY_API_KEY']}"
+  # base_url = "https://api.giphy.com/v1/gifs/search?api_key=YJX6Vs4kayAeOM4etN7P5ueL4ie4wU5D&q=dragons"
 
-  # response = Faraday.get("...")
-  # parse the response
-  # grab the data we want, exclude the rest
-  # parsed_response = JSON.parse(response.body)
+  # response = Faraday.get("https://api.giphy.com/v1/gifs/search?api_key=YJX6Vs4kayAeOM4etN7P5ueL4ie4wU5D&q=dragons")
+  # parsed_gif_data = JSON.parse(response.body)
+
+  # first_image = parsed_gif_data["data"][0]["images"]["original"]["url"]
+
   # image_urls = []
+  # parsed_gif_data["data"].each do |image_hash|
+  #   image_urls << image_hash["images"]["original"]["url"]
+  # end
 
-  # stuff = GifsWrapper.new.retrieive_gifs("cats")
-  # consider refactoring
+  giphy_client = GifsWrapper.new
+  image_urls = giphy_client.retrieive_gifs("centaurs")
+ 
   content_type :json
-  json image_urls
+  json(image_urls)
 end
 
 # If the path does not match any of the above routes, render the erb page.
