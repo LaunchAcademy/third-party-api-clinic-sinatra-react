@@ -21,7 +21,7 @@ const App = (props) => {
   }, [])
 
   const gifImages = gifs.map((gifLink) => {
-    return <img src={gifLink} height="200" width="200"></img>
+    return <img key={gifLink} src={gifLink} height="200" width="200"></img>
   })
 
   return (

@@ -24,21 +24,22 @@ get "/" do
 end
 
 get "/api/v1/gifs" do
-  # base_url = "https://api.giphy.com/v1/gifs/search?api_key=YJX6Vs4kayAeOM4etN7P5ueL4ie4wU5D&q=dragons"
+  BASE_URL = "https://api.giphy.com/v1/gifs/search?api_key=YJX6Vs4kayAeOM4etN7P5ueL4ie4wU5D&q=dragons"
 
-  # response = Faraday.get("https://api.giphy.com/v1/gifs/search?api_key=YJX6Vs4kayAeOM4etN7P5ueL4ie4wU5D&q=dragons")
-  # parsed_gif_data = JSON.parse(response.body)
+  response = Faraday.get(BASE_URL)
+  parsed_gif_data = JSON.parse(response.body)
+  binding.pry
 
   # first_image = parsed_gif_data["data"][0]["images"]["original"]["url"]
 
-  # image_urls = []
-  # parsed_gif_data["data"].each do |image_hash|
-  #   image_urls << image_hash["images"]["original"]["url"]
-  # end
+  image_urls = []
+  parsed_gif_data["data"].each do |image_hash|
+    image_urls << image_hash["images"]["original"]["url"]
+  end
 
-  giphy_client = GifsWrapper.new
-  image_urls = giphy_client.retrieive_gifs("centaurs")
- 
+  # giphy_client = GifsWrapper.new
+  # image_urls = giphy_client.retrieive_gifs("centaurs")
+  binding.pry
   content_type :json
   json(image_urls)
 end
